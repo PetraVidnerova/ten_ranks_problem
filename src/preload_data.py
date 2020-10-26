@@ -40,4 +40,4 @@ def load_data(valid_columns=None, label=None):
 
 
 if __name__ == "__main__":
-    load_data([2, 5], label="2vs5")
+    load_data([3, 6], label="3vs6")
