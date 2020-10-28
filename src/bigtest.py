@@ -17,7 +17,7 @@ def test_model(name, X, y):
     
     model.compile(#loss="mse",
         loss='binary_crossentropy',
-        optimizer=RMSprop(lr=0.0001, decay=2e-05),
+        optimizer=RMSprop(),
         #                  optimizer=Adam(lr=0.00001),
         metrics=['accuracy'])
 
@@ -32,7 +32,7 @@ def test_model(name, X, y):
 
     model.fit(X_train, Y_train,
               batch_size=2**16,
-              epochs=epochs,
+              epochs=100000,
               validation_data=(X_test, Y_test),
               verbose=2)
 #              shuffle=True)
