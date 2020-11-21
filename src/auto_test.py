@@ -28,10 +28,10 @@ def test_model(X, y):
     #     max_trials=100
     # )
     
-    model = ak.StructuredDataClassifier(max_trials=10, overwrite=True)
+    model = ak.StructuredDataClassifier(max_trials=30, overwrite=True)
     model.fit(X_train, Y_train,
               batch_size=2**10,
-              epochs=100,
+              epochs=1000,
               verbose=2)
     results = model.predict(X_test)
 
@@ -58,8 +58,8 @@ if __name__ == "__main__":
     # X = np.load(f"{DATA_DICT}/X_3vs6.npy")
     # y = np.load(f"{DATA_DICT}/y_3vs6.npy")
 
-    X = np.load(f"{DATA_DICT}/X_0vs2.npy")
-    y = np.load(f"{DATA_DICT}/y_0vs2.npy")
+    X = np.load(f"{DATA_DICT}/X_0vs1.npy")
+    y = np.load(f"{DATA_DICT}/y_0vs1.npy")
 
 
     test_model(X, y)

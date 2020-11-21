@@ -19,12 +19,12 @@ def _dense_model_2(input_shape, classes):
         Flatten(input_shape=input_shape),
         Dense(128, activation='relu'),
         Dropout(0.25),
-        # Dense(64, activation='relu'),
-        # Dropout(0.25),
+        Dense(64, activation='relu'),
+        Dropout(0.25),
         Dense(32, activation='relu'),
         Dropout(0.25),
-        # Dense(16, activation='relu'),
-        Dense(classes, activation="softmax")
+        Dense(1, activation='sigmoid'),
+        #Dense(classes, activation="softmax")
     ])
     return model
 
@@ -42,7 +42,7 @@ def _simple_conv_network(input_shape, classes):
 
 def _conv_network2(input_shape, classes):
     model = Sequential([
-        Reshape((125,1), input_shape=input_shape),
+        Reshape((1, 125), input_shape=input_shape),
         Conv1D(filters=16, kernel_size=3, padding='same',
                activation='relu', input_shape=input_shape),
         Dropout(0.25),
@@ -74,6 +74,7 @@ def _conv_network3D(input_shape, classes):
     return model
 
 def _conv_network3D_2(input_shape, classes):
+    print(" HULA HOP ")
     model = Sequential([
         Reshape((1,5,5,5), input_shape=input_shape),
         Conv3D(filters=32, kernel_size=3, padding='same',
@@ -86,8 +87,8 @@ def _conv_network3D_2(input_shape, classes):
         Flatten(),        
         Dense(32, activation='relu'),
 #        Dense(, activation='relu'),
-        Dense(classes, activation="softmax")
-        #Dense(1, activation = 'sigmoid')
+#        Dense(classes, activation="softmax")
+        Dense(1, activation = 'sigmoid')
     ])
     return model
 
@@ -121,12 +122,12 @@ _saved1 = partial(_saved, 1)
 
 
 MODELS = [
-    "simple_dense_model",
+    "simple_dense_model", #0
     "dense_model_2",
     "simple_conv_network",
     "conv_network2",
-    "conv_network3D",
-    "conv_network3D_2",
+    "conv_network3D",  # 4
+    "conv_network3D_2", # 5
     "saved2",
     "saved1"
 ]
